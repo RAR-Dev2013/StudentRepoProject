@@ -1,6 +1,8 @@
 package StudentProjectBackend.StudentProject.Controller;
 
+import StudentProjectBackend.StudentProject.Model.Faculty;
 import StudentProjectBackend.StudentProject.Model.Students;
+import StudentProjectBackend.StudentProject.Service.FacultyService;
 import StudentProjectBackend.StudentProject.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ public class MainController {
 
     @Autowired
     StudentService studentService;
+    FacultyService facultyService;
 
     @GetMapping("/")
     public String greeting() {
@@ -27,6 +30,10 @@ public class MainController {
 
     //EDIT STUDENTS
 
+    //Get all FACULTY
+    @GetMapping("/allFaculty")
+    public @ResponseBody
+    List<Faculty> getAllFaculties() {return facultyService.getAllFaculty(); }
 
 
 }
