@@ -20,4 +20,16 @@ public class FacultyIMPL implements FacultyService {
         System.out.println(list.size());
         return list;
     }
+
+    // Get a faculty member by ID
+    // Had to change String to Optional<Faculty>
+    public Faculty getByID(int id){
+        // Convert id into a string
+        String s_fmember = String.valueOf(id);
+        // Dont know what Optional<Faculty> type is but
+        // finally accepts my search
+        Faculty f_member = facultyRepo.getReferenceById(s_fmember);
+        return f_member;
+
+    }
 }
