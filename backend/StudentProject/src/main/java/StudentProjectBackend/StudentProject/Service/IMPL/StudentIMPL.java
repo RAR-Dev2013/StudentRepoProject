@@ -6,7 +6,9 @@ import StudentProjectBackend.StudentProject.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentIMPL implements StudentService {
@@ -21,4 +23,12 @@ public class StudentIMPL implements StudentService {
         return list;
 
     }
+
+    //GET STUDENTS BY ID
+    @Override
+    public Optional<Students> getStudentByID(int studentID) {
+        return studentRepo.findById(studentID);
+
+    }
+
 }
