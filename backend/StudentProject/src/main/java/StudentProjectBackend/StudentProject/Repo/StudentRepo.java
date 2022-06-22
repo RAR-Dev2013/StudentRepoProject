@@ -3,7 +3,10 @@ package StudentProjectBackend.StudentProject.Repo;
 import StudentProjectBackend.StudentProject.Model.Students;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StudentRepo extends JpaRepository<Students, String> {
+import java.util.List;
+import java.util.Optional;
 
+public interface StudentRepo extends JpaRepository<Students, Integer> {
 
+    Optional<Students> findById(int studentID);
 }
