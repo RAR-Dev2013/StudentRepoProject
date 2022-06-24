@@ -18,6 +18,7 @@ public class MainController {
 
     @Autowired
     StudentService studentService;
+    @Autowired
     FacultyService facultyService;
 
     @GetMapping("/")
@@ -28,14 +29,14 @@ public class MainController {
     //GET ALL STUDENTS
     @GetMapping("/allStudents")
     public @ResponseBody
-    List<Students> getAllStudents() {return studentService.getAllStudents(); }
+    List<Students> getAllStudentsController() {return studentService.getAllStudents(); }
 
     //EDIT STUDENTS
 
     //Get all FACULTY
     @GetMapping("/allFaculty")
     public @ResponseBody
-    List<Faculty> getAllFaculties() {return facultyService.getAllFaculty(); }
+    List<Faculty> getAllFacultyController() {return facultyService.getAllFaculty(); }
 
     @GetMapping("/users/{studentId}")
     public @ResponseBody Optional<Students> getStudentsById(@PathVariable int studentId) {
