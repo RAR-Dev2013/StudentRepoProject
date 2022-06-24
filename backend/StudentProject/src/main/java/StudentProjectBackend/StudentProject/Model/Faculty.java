@@ -1,5 +1,6 @@
 package StudentProjectBackend.StudentProject.Model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -35,12 +36,13 @@ public class Faculty {
     private String positionLevel;
 
     @Column(name = "tenure")
-    private String tenurel;
+    private String tenure;
 
     public Faculty() {
+
     }
 
-    public Faculty(int facultyID, String firstName, String middleName, String lastName, String address, String phoneNumber, String assignedCollege, String positionLevel, String tenurel) {
+    public Faculty(int facultyID, String firstName, String middleName, String lastName, String address, String phoneNumber, String assignedCollege, String positionLevel, String tenure) {
         this.facultyID = facultyID;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -49,7 +51,7 @@ public class Faculty {
         this.phoneNumber = phoneNumber;
         this.assignedCollege = assignedCollege;
         this.positionLevel = positionLevel;
-        this.tenurel = tenurel;
+        this.tenure = tenure;
     }
 
     public int getFacultyID() {
@@ -116,11 +118,11 @@ public class Faculty {
         this.positionLevel = positionLevel;
     }
 
-    public String getTenurel() {
-        return tenurel;
+    public String getTenure() {
+        return tenure;
     }
 
-    public void setTenurel(String tenurel) {
-        this.tenurel = tenurel;
+    public void setTenure(String tenure) {
+        this.tenure = tenure;
     }
 }
