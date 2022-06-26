@@ -43,6 +43,20 @@ public class MainController {
         studentService.deleteStudentByID(studentId);
     }
 
+    //ADD STUDENT BY ID//
+    @PostMapping("/addStudent")
+    public void addStudent(@RequestBody Students students) {
+        studentService.saveOrUpdate(students);
+    }
+
+    //UPDATE STUDENT BY ID//
+    @PatchMapping("/updateStudent")
+    public void updateStudent(@RequestBody Students students) {
+        studentService.saveOrUpdate(students);
+    }
+
+
+
 
 
 

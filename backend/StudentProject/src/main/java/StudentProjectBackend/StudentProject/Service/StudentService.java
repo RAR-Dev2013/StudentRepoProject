@@ -12,4 +12,6 @@ public interface StudentService {
     Optional<Students> getStudentByID(int studentID);
 
     public void deleteStudentByID(int studentID);
+
+    public void saveOrUpdate(Students students);
 }
