@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FacultyIMPL implements FacultyService {
@@ -19,5 +20,11 @@ public class FacultyIMPL implements FacultyService {
         List<Faculty> list = facultyRepo.findAll();
         System.out.println(list.size());
         return list;
+    }
+
+    //Get 1 Faculty
+    @Override
+    public Optional<Faculty> getFacultyByID(int facultyID) {
+        return facultyRepo.findByFacultyID(facultyID);
     }
 }
