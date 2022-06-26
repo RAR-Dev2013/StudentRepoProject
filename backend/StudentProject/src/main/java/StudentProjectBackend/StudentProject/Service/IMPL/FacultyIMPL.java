@@ -27,4 +27,9 @@ public class FacultyIMPL implements FacultyService {
     public Optional<Faculty> getFacultyByID(int facultyID) {
         return facultyRepo.findByFacultyID(facultyID);
     }
+
+    // Delete by Faculty ID
+    public void deleteFacultyByID(int facultyID) {
+        facultyRepo.deleteById(facultyID);
+    }
 }
