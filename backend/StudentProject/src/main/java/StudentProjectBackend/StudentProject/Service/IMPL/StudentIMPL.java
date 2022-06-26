@@ -21,14 +21,19 @@ public class StudentIMPL implements StudentService {
         List<Students> list = studentRepo.findAll();
         System.out.println(list.size());
         return list;
-
     }
 
     //GET STUDENTS BY ID
     @Override
     public Optional<Students> getStudentByID(int studentID) {
         return studentRepo.findById(studentID);
+    }
+
+    //DELETE BY STUDENT ID//
+    public void deleteStudentByID(int studentID) {
+        studentRepo.deleteById(studentID);
 
     }
+
 
 }
