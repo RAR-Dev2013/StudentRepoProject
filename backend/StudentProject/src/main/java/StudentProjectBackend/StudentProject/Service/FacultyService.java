@@ -12,4 +12,6 @@ public interface FacultyService {
     Optional<Faculty> getFacultyByID(int facultyID);
 
     public void deleteFacultyByID(int facultyID);
+
+    public void saveOrUpdate(Faculty faculty);
 }

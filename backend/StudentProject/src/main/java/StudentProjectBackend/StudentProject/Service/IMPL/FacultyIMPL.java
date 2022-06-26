@@ -32,4 +32,8 @@ public class FacultyIMPL implements FacultyService {
     public void deleteFacultyByID(int facultyID) {
         facultyRepo.deleteById(facultyID);
     }
+
+    public void saveOrUpdate(Faculty faculty) {
+        facultyRepo.save(faculty);
+    }
 }

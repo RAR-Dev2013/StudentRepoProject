@@ -58,8 +58,6 @@ public class MainController {
 
 
 
-
-
     //FACULTY SEIGE MODE PARTS//
     //GET ALL FACULTY
     @GetMapping("/allFaculty")
@@ -76,6 +74,18 @@ public class MainController {
     @DeleteMapping("/facultyDeleteByID/{facultyID}")
     public void deleteFacultyByID(@PathVariable("facultyID") int facultyID) {
         facultyService.deleteFacultyByID(facultyID);
+    }
+
+    //Add faculty by ID
+    @PostMapping("/addFaculty")
+    public void addFaculty(@RequestBody Faculty faculty) {
+        facultyService.saveOrUpdate(faculty);
+    }
+
+    //Update Student by ID
+    @PutMapping("/updateFaculty")
+    public void updateFaculty(@RequestBody Faculty faculty) {
+        facultyService.saveOrUpdate(faculty);
     }
 
 }
