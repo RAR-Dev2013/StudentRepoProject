@@ -58,4 +58,10 @@ public class MainController {
         return facultyService.getFacultyByID(facultyID);
     }
 
+    // Delete Faculty BY ID
+    @DeleteMapping("/facultyDeleteByID/{facultyID}")
+    public void deleteFacultyByID(@PathVariable("facultyID") int facultyID) {
+        facultyService.deleteFacultyByID(facultyID);
+    }
+
 }

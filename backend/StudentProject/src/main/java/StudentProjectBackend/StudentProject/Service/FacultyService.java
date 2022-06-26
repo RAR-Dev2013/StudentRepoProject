@@ -10,4 +10,6 @@ public interface FacultyService {
     public List<Faculty> getAllFaculty();
 
     Optional<Faculty> getFacultyByID(int facultyID);
+
+    public void deleteFacultyByID(int facultyID);
 }
