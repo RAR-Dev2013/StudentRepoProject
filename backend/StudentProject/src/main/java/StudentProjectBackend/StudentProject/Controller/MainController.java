@@ -43,5 +43,9 @@ public class MainController {
         return studentService.getStudentByID(studentId);
     }
 
+    @GetMapping("/users/faculty/{facultyID}")
+    public @ResponseBody Optional<Faculty> getFacultyByID(@PathVariable int facultyID) {
+        return facultyService.getFacultyByID(facultyID);
+    }
 
 }
