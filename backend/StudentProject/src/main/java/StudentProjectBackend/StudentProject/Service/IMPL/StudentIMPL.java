@@ -35,5 +35,10 @@ public class StudentIMPL implements StudentService {
 
     }
 
+    //SAVE STUDENT//
+    public void saveOrUpdate(Students students) {
+        studentRepo.save(students);
+    }
+
 
 }
