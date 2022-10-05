@@ -5,7 +5,10 @@ const btnStyle = {backgroundColor: 'black', color: 'white', border: 'none', padd
 function Table({ list, colNames, pageNum = 0, pageSize= 10, width = 'auto', height= 'auto' }) {
 
     const [page, setPage] = useState(pageNum)
-    const [renderedList, setRenderedList] = useState(list);
+    const [sortedlist, setSortedList] = useState(list);
+    const [sortColumn, setSortColumn] = useState();
+    const [sortAcscending, setSortAcscending] = useState(true);
+
 
     const onBack = () => {
         setPage(page - 1 > -1 ? page - 1 : page)
@@ -15,6 +18,47 @@ function Table({ list, colNames, pageNum = 0, pageSize= 10, width = 'auto', heig
         setPage(page + 1 < list.length / pageSize ? page + 1 : page)
     }
 
+    const sortByColumn = (colName) => {
+        let tempSortedList = [...list];
+        let newSortDirection = !sortAcscending;
+
+        if (colName !== sortColumn) {
+            newSortDirection = true;
+            setSortColumn(colName);
+        }
+
+        if (newSortDirection) {
+            //sorts in accending order
+            tempSortedList.sort((a, b) => {
+                const x = a[colName];
+                const y = b[colName];
+                if (x < y ) {
+                    return -1;
+                }
+                if(x > y ) {
+                    return 1;
+                }
+                return 0;
+            });
+         } else {
+            //sorts in decending
+            tempSortedList.sort((a, b) => {
+                const x = a[colName];
+                const y = b[colName];
+                if (x < y ) {
+                    return 1;
+                }
+                if(x > y ) {
+                    return -1;
+                }
+                return 0;
+            });
+        }
+
+        setSortAcscending(newSortDirection);
+        setSortedList(tempSortedList);
+    };
+
 
     return (
         <div style= {{ width: '50%', boxShadow: "3px 6px 3px #ccc"}}>
@@ -23,7 +67,7 @@ function Table({ list, colNames, pageNum = 0, pageSize= 10, width = 'auto', heig
                     <thead style= {{ backgroundColor: "black", color: "white"}}>
                         <tr>
                             {colNames.map((headerItem, index) => (
-                                <th key={index}>
+                                <th key={index} onClick= {() => sortByColumn(headerItem.toLowerCase())}>
                                     {headerItem.toUpperCase()}
                                 </th>
                             ))}
@@ -31,7 +75,7 @@ function Table({ list, colNames, pageNum = 0, pageSize= 10, width = 'auto', heig
                     </thead>
                     <tbody>
                         {Object.values(
-                            list.slice(pageSize * page, pageSize * page + pageSize)
+                            sortedlist.slice(pageSize * page, pageSize * page + pageSize)
                         ).map((obj, index) => (
                             <tr key={index}>
                                 {Object.values(obj).map((value, index2) => (
@@ -41,12 +85,14 @@ function Table({ list, colNames, pageNum = 0, pageSize= 10, width = 'auto', heig
                         ))}
                     </tbody>
                     <tfoot>
+                        <tr>
                         <td></td>
                         <td style={{ padding: '10px 0'}}>
                             <button style={btnStyle} onClick={onBack}>BACK</button>
                             <label style={{padding: '0 1em'}}>{page + 1}</label>
                             <button style={btnStyle} onClick={onNext}>Next</button>
                         </td>
+                        </tr>
                     </tfoot>
 
                 </table>
