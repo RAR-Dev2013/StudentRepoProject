@@ -2,6 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 
 import Table from './components/table/Table'
+import Navbar from './Navbar';
+import { Component } from 'react';
+import {Route, Routes} from "react-router-dom";
+import Student from "./pages/Student";
+import Home from "./pages/Home";
+import Faculty from "./pages/Faculty";
 
 const list = [
   { id: 44, name: "Joe Dean", Age: 66},
@@ -21,10 +27,27 @@ const colNames = ['Id', 'Name', 'Age']
 
 function App() {
   return (
-    <div className="App">
-      <Table list={list} colNames={colNames} pageSize={3} />
-    </div>
-  );
+
+    <>
+      <Navbar/>
+      <div className="App">
+        <Routes>
+          <Route path= "/" element={<Home />} />
+          <Route path= "/Student" element={<Student />} />
+          <Route path= "/faculty" element={<Faculty />} />
+        </Routes>
+      </div>
+    </>
+
+
+  )
+    
+    return <Navbar/>
+    // <div className="App">
+    //   <Navbar/>
+    //   <Table list={list} colNames={colNames} pageSize={3} />
+    // </div>
+  // );
 }
 
 export default App;
