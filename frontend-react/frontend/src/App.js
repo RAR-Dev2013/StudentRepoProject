@@ -5,10 +5,11 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import Table from './components/table/Table'
 import Navbar from './Navbar';
 import { Component } from 'react';
-import {Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Student from "./pages/Student";
 import Home from "./pages/Home";
 import Faculty from "./pages/Faculty";
+import AddUser from './users/addUsers';
 
 const list = [
   { id: 44, name: "Joe Dean", Age: 66},
@@ -36,6 +37,7 @@ function App() {
           <Route path= "/" element={<Home />} />
           <Route path= "/Student" element={<Student />} />
           <Route path= "/faculty" element={<Faculty />} />
+          <Route path= "/addUser" element={<AddUser />} />
         </Routes>
       </div>
     </>

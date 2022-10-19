@@ -7,6 +7,9 @@ class Faculty extends Component {
         FACULTY FACULTY
       </p>
     )
+
+
+
   }
 }
 

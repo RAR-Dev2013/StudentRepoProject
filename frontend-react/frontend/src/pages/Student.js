@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+
 
 export default function Student() {
 
@@ -31,6 +34,8 @@ export default function Student() {
               <th scope="col">Address</th>
               <th scope="col">Phone Number</th>
               <th scope="col">Grade Level</th>
+              <th scope="col">Grade Level</th>
+              <Link to="/addUser">HI</Link>
             </tr>
           </thead>
           <tbody>

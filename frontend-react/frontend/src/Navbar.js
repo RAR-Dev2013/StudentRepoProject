@@ -10,6 +10,9 @@ export default function Navbar() {
         <li>
             <Link to="./faculty">Faculty</Link>
         </li>
+        <li>
+            <Link to="./addUser">AddUser</Link>
+        </li>
        </ul>
     </nav>
 }
