@@ -52,6 +52,8 @@ export default function Student() {
               <td key={user.address}>{user.address}</td>
               <td key={user.phoneNumber}>{user.phoneNumber}</td>
               <td key={user.gradeLevel}>{user.gradeLevel}</td>
+              <td><button type="button" class="btn btn-primary">Edit</button></td>
+              <td><button type="button" class="btn btn-danger">Delete</button></td>
             </tr>  
               ))
             }
