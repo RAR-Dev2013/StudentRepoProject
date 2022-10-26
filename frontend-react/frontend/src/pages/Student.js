@@ -34,7 +34,6 @@ export default function Student() {
               <th scope="col">Address</th>
               <th scope="col">Phone Number</th>
               <th scope="col">Grade Level</th>
-              <th scope="col">Grade Level</th>
               <Link to="/addUser">
                 <button type="button">
                   Add User

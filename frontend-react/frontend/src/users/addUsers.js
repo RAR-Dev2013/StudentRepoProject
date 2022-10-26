@@ -1,7 +1,11 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function AddUser() {
+    let navigate=useNavigate()
+    
     const [user,setUser]=useState({
         studentID:"",
         firstName:"",
@@ -19,10 +23,16 @@ export default function AddUser() {
         setUser({ ...user,[e.target.name]:e.target.value});
 
     }
+
+    const onSubmit =async (e) => {
+        e.preventDefault();
+        await axios.post("http://localhost:8080/addStudent", user)
+        navigate("/");
+    };
     
     return <div className="container">
         <h1>Form Goes Here</h1>
-        <form>
+        <form onSubmit={(e)=> onSubmit(e)}>
             <div class="mb-3">
                 <label for="labelStudentID" class="form-label">Student ID</label>
                 <input
