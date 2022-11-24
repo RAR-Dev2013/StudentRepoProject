@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 
 export default function Student() {
 
   const [users, setUsers] = useState([]);
+
+  const {studentID}=useParams()
 
   useEffect(() => {
     loadUsers();
@@ -17,6 +19,11 @@ export default function Student() {
     setUsers(result.data);
   }
   
+  const deleteUser = async (studentID)=>{
+    await axios.delete(`http://localhost:8080/studentDeleteByID/${studentID}`)
+    loadUsers()
+  }
+
 
 
   return (
@@ -56,9 +63,11 @@ export default function Student() {
                   <td>
                     <Link type="button" class="btn btn-primary"                  
                     to={`/editUser/${user.studentID}`}
-                    >Edit</Link>
+                    >Edit</Link>  
                   
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-danger"
+                    onClick={()=>deleteUser(user.studentID)}
+                    >Delete</button>
                   </td>
                 </tr>  
               ))
