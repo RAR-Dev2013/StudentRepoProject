@@ -2,16 +2,17 @@ package StudentProjectBackend.StudentProject.Controller;
 
 import StudentProjectBackend.StudentProject.Model.Faculty;
 import StudentProjectBackend.StudentProject.Model.Students;
+import StudentProjectBackend.StudentProject.Repo.StudentRepo;
 import StudentProjectBackend.StudentProject.Service.FacultyService;
 import StudentProjectBackend.StudentProject.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
 public class MainController {
 
     @Autowired
@@ -40,8 +41,13 @@ public class MainController {
 
     //DELETE STUDENTS BY ID//
     @DeleteMapping("/studentDeleteByID/{studentID}")
-    public void deleteStudent(@PathVariable("studentID") int studentId) {
-        studentService.deleteStudentByID(studentId);
+    public String deleteStudent(@PathVariable("studentID") int studentId) {
+        Students studentToDelete = studentService.getStudentByID(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("BAD IDEA"));
+
+        studentService.deleteStudentByID(studentToDelete.getStudentID());
+
+        return "Deleted +" + studentId;
     }
 
     //ADD STUDENT BY ID//
@@ -51,12 +57,28 @@ public class MainController {
     }
 
     //UPDATE STUDENT BY ID//
-    @PatchMapping("/updateStudent")
-    public void updateStudent(@RequestBody Students students) {
-        studentService.saveOrUpdate(students);
+//    @PatchMapping("/updateStudent")
+//    public void updateStudent(@RequestBody Students students) {
+//        studentService.saveOrUpdate(students);
+//    }
+
+    //UPDATE STUDENT BY ID//
+    @PutMapping("/updateStudent/{studentId}")
+    public ResponseEntity<Students> updateStudent(@RequestBody Students studentDetails, @PathVariable int studentId) {
+        Students updatedStudent = studentService.getStudentByID(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("BAD IDEA"));
+
+        updatedStudent.setStudentID(studentDetails.getStudentID());
+        updatedStudent.setFirstName(studentDetails.getFirstName());
+        updatedStudent.setMiddleName(studentDetails.getMiddleName());
+        updatedStudent.setLastName(studentDetails.getLastName());
+        updatedStudent.setAddress(studentDetails.getAddress());
+        updatedStudent.setPhoneNumber(studentDetails.getPhoneNumber());
+        updatedStudent.setGradeLevel(studentDetails.getGradeLevel());
+        studentService.saveOrUpdate(updatedStudent);
+
+        return ResponseEntity.ok(updatedStudent);
     }
-
-
 
 
     //FACULTY SEIGE MODE PARTS//
