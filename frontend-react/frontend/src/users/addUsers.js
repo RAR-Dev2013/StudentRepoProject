@@ -19,7 +19,6 @@ export default function AddUser() {
     const{studentID,firstName,middleName,lastName,address,phoneNumber,gradeLevel}=user
 
     const onInputChange=(e)=> {
-
         setUser({ ...user,[e.target.name]:e.target.value});
 
     }
