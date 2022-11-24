@@ -16,6 +16,7 @@ export default function Student() {
     const result = await axios.get("http://localhost:8080/allStudents");
     setUsers(result.data);
   }
+  
 
 
   return (
@@ -44,17 +45,22 @@ export default function Student() {
           <tbody>
             {
               users.map((user,index)=>(
-              <tr>
-              <td key={user.studentID}>{user.studentID}</td>
-              <td key={user.firstName}>{user.firstName}</td>
-              <td key={user.middleName}>{user.middleName}</td>
-              <td key={user.lastName}>{user.lastName}</td>
-              <td key={user.address}>{user.address}</td>
-              <td key={user.phoneNumber}>{user.phoneNumber}</td>
-              <td key={user.gradeLevel}>{user.gradeLevel}</td>
-              <td><button type="button" class="btn btn-primary">Edit</button></td>
-              <td><button type="button" class="btn btn-danger">Delete</button></td>
-            </tr>  
+                <tr>
+                  <td key={user.studentID}>{user.studentID}</td>
+                  <td key={user.firstName}>{user.firstName}</td>
+                  <td key={user.middleName}>{user.middleName}</td>
+                  <td key={user.lastName}>{user.lastName}</td>
+                  <td key={user.address}>{user.address}</td>
+                  <td key={user.phoneNumber}>{user.phoneNumber}</td>
+                  <td key={user.gradeLevel}>{user.gradeLevel}</td>
+                  <td>
+                    <Link type="button" class="btn btn-primary"                  
+                    to={`/editUser/${user.studentID}`}
+                    >Edit</Link>
+                  
+                    <button type="button" class="btn btn-danger">Delete</button>
+                  </td>
+                </tr>  
               ))
             }
           </tbody>
