@@ -43,7 +43,7 @@ export default function Student() {
               <th scope="col">Phone Number</th>
               <th scope="col">Grade Level</th>
               <Link to="/addUser">
-                <button type="button">
+                <button type="button" class="addUser">
                   Add User
                 </button>
               </Link>
